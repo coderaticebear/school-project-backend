@@ -93,7 +93,7 @@ router.post(
 router.post("/login", [
 
   body("username").notEmpty().trim(),
-  boyd("password").notEmpty()
+  body("password").notEmpty()
 ],async (req, res) => {
   
 
