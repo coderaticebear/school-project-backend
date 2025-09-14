@@ -4,7 +4,7 @@ const User = require("../../models/User");
 const settings = require("../../config/settings");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
-
+const jsonwt = require("jsonwebtoken")
 router.use(express.json());
 router.use(express.urlencoded());
 
@@ -116,7 +116,19 @@ router.post("/login", [
 
       const passwordCheck = await bcrypt.compare(password, user.password)
       if(passwordCheck) {
-        
+        const payload = {
+          username: user.username,
+        }
+
+        const token = jsonwt.sign(payload, settings.secret, {
+          expiresIn: "1h",
+        })
+
+        return res.status(200).json({
+          status: true,
+          message: "Login Success",
+          token: "Bearer " + token
+        })
       }
     }
 
