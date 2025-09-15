@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const profileSchema = require("./Profile")
 
 const Schema = mongoose.Schema;
 
@@ -19,6 +20,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  profile: profileSchema,
   createdAt: {
     type: Date,
     required: true,

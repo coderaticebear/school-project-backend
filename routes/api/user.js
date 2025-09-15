@@ -15,7 +15,7 @@ router.use(express.urlencoded());
  * Register user for login
  */
 router.post(
-  "/setLogin",
+  "/register",
   [
     body("username").notEmpty().trim(),
     body("email").notEmpty().isEmail().normalizeEmail(),

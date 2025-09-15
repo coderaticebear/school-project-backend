@@ -16,6 +16,7 @@ const profileSchema = new Schema({
   },
   addressOne: {
     type: String,
+    required: true
   },
   addressTwo: {
     type: String,
